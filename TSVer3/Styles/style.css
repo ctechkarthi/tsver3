@@ -1,0 +1,53 @@
+
+ input[type=text] {
+            border: 1px solid #AAA;
+            box-shadow: 0px 0px 3px #CCC, 0px 8px 13px #EEE inset;
+            border-radius: 5px;
+            padding-right: 5px;
+            padding-left: 5px;
+            transition: padding 0.25s ease 0s;
+            height: 20px;
+            width: 180px;
+            margin: 1px;
+        }
+
+            input[type=text]:focus {
+                border-color: #66AFE9;
+                outline: 0px none;
+                box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+                border: 1px solid #AAA;
+                /* box-shadow: 0px 0px 3px #CCC, 0px 8px 13px #EEE inset;*/
+                border-radius: 5px;
+                padding-right: 5px;
+                padding-left: 5px;
+                transition: padding 0.25s ease 0s;
+                height: 20px;
+                width: 180px;
+                margin: 1px;
+            }
+            input[type=password] {
+            border: 1px solid #AAA;
+            box-shadow: 0px 0px 3px #CCC, 0px 8px 13px #EEE inset;
+            border-radius: 5px;
+            padding-right: 5px;
+            padding-left: 5px;
+            transition: padding 0.25s ease 0s;
+            height: 20px;
+            width: 180px;
+            margin: 1px;
+        }
+
+            input[type=password]:focus {
+                border-color: #66AFE9;
+                outline: 0px none;
+                box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset, 0px 0px 8px rgba(102, 175, 233, 0.6);
+                border: 1px solid #AAA;
+                /* box-shadow: 0px 0px 3px #CCC, 0px 8px 13px #EEE inset;*/
+                border-radius: 5px;
+                padding-right: 5px;
+                padding-left: 5px;
+                transition: padding 0.25s ease 0s;
+                height: 20px;
+                width: 180px;
+                margin: 1px;
+            }
