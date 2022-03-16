@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using RestSharp;
 using System.Web;
-using static TSVer3.Modal.EInvoiceModel;
+using TSVer3.Modal;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Net;
