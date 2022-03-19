@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Net;
+using System.Drawing;
 
 namespace TSVer3.Modal
 {
@@ -40,6 +41,8 @@ namespace TSVer3.Modal
         public string Irn { get; set; }
         public string SignedInvoice { get; set; }
         public string SignedQRCode { get; set; }
+        public string QrCodeImage { get; set; }
+        public string JwtIssuer { get; set; }
         public string Status { get; set; }
         public List<ErrDetails> ErrorDetails { get; set; }
     }
@@ -146,23 +149,23 @@ namespace TSVer3.Modal
         public decimal Qty { get; set; }
         public string FreQty { get; set; }
         public string Unit { get; set; }
-        public string UnitPrice { get; set; }
-        public string TotAmt { get; set; }
-        public string Discount { get; set; }
-        public string PreTaxVal { get; set; }
-        public string AssAmt { get; set; }
-        public string GstRt { get; set; }
-        public string IgstAmt { get; set; }
-        public string CgstAmt { get; set; }
-        public string SgstAmt { get; set; }
-        public string CesRt { get; set; }
-        public string CesAmt { get; set; }
-        public string CesNonAdvlAmt { get; set; }
-        public string StateCesRt { get; set; }
-        public string StateCesAmt { get; set; }
-        public string StateCesNonAdvlAmt { get; set; }
-        public string OthChrg { get; set; }
-        public string TotItemVal { get; set; }
+        public decimal UnitPrice { get; set; }
+        public decimal TotAmt { get; set; }
+        public decimal Discount { get; set; }
+        public decimal PreTaxVal { get; set; }
+        public decimal AssAmt { get; set; }
+        public decimal GstRt { get; set; }
+        public decimal IgstAmt { get; set; }
+        public decimal CgstAmt { get; set; }
+        public decimal SgstAmt { get; set; }
+        public decimal CesRt { get; set; }
+        public decimal CesAmt { get; set; }
+        public decimal CesNonAdvlAmt { get; set; }
+        public decimal StateCesRt { get; set; }
+        public decimal StateCesAmt { get; set; }
+        public decimal StateCesNonAdvlAmt { get; set; }
+        public decimal OthChrg { get; set; }
+        public decimal TotItemVal { get; set; }
         public string OrdLineRef { get; set; }
         public string OrgCntry { get; set; }
         public string PrdSlNo { get; set; }
@@ -185,17 +188,17 @@ namespace TSVer3.Modal
 
     public class ValDtls
     {
-        public string AssVal { get; set; }
-        public string CgsVal { get; set; }
-        public string SgsVal { get; set; }
-        public string IgstVal { get; set; }
-        public string CesVal { get; set; }
-        public string StCesVal { get; set; }
-        public string Discount { get; set; }
-        public string OtherChrg { get; set; }
-        public string RndOffAmt { get; set; }
-        public string TotInvVal { get; set; }
-        public string TotInvValFc { get; set; }
+        public decimal AssVal { get; set; }
+        public decimal CgsVal { get; set; }
+        public decimal SgsVal { get; set; }
+        public decimal IgstVal { get; set; }
+        public decimal CesVal { get; set; }
+        public decimal StCesVal { get; set; }
+        public decimal Discount { get; set; }
+        public decimal OtherChrg { get; set; }
+        public decimal RndOffAmt { get; set; }
+        public decimal TotInvVal { get; set; }
+        public decimal TotInvValFc { get; set; }
     }
 
     public class PayDtls
@@ -208,9 +211,9 @@ namespace TSVer3.Modal
         public string Payinstr { get; set; }
         public string Crtrn { get; set; }
         public string Dirdr { get; set; }
-        public string Crday { get; set; }
-        public string Paidamt { get; set; }
-        public string Paymtdue { get; set; }    
+        public int Crday { get; set; }
+        public decimal Paidamt { get; set; }
+        public decimal Paymtdue { get; set; }    
     }
 
     public class RefDtls
