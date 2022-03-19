@@ -194,6 +194,33 @@ namespace TSVer3.BL
             return iRNResponseModel;
         }
 
+
+        public IRNResponseModel CancelIRNEInvoice()
+        {
+            IRNResponseModel iRNResponseModel = new IRNResponseModel();
+            //get the auth token from API
+            var authToken = GetAuthToken();
+            try
+            {
+                var client = new RestClient("https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice/Cancel?aspid=1677089922&password=Etrack@630&Gstin=34AACCC1596Q002&eInvPwd=abc34*&AuthToken=a6eyDn7Rj3DPTJ8TyZ3HvgMrw&user_name=TaxProEnvPON");
+                client.Timeout = -1;
+                var irnRequest = new RestRequest(Method.POST);
+
+                var json = "";
+
+                irnRequest.AddParameter("application/json; charset=utf-8", json, ParameterType.RequestBody);
+                irnRequest.RequestFormat = DataFormat.Json;
+
+                IRestResponse response = client.Execute(irnRequest);
+                iRNResponseModel = JsonConvert.DeserializeObject<IRNResponseModel>(response.Content);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return iRNResponseModel;
+        }
+
         /// <summary>
         /// Get the Auth token from taxpro for IRN generation
         /// </summary>
