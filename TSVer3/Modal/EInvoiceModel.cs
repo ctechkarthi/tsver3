@@ -36,16 +36,28 @@ namespace TSVer3.Modal
     /// </summary>
     public class IRNResponseModel
     {
+        public int Status { get; set; }
+        public string Data { get; set; }
+        public List<ErrDetails> ErrorDetails { get; set; }
+        public List<RespInfoDtlsPl> InfoDtls { get; set; }
+    }
+
+    public class RespInfoDtlsPl
+    {
+        public string InfCd { get; set; }
+        public object Desc { get; set; }
+    }
+
+    public class RedData{
         public string AckNo { get; set; }
-        public DateTime AtckD { get; set; }
+        public string AckDt { get; set; }
         public string Irn { get; set; }
         public string SignedInvoice { get; set; }
         public string SignedQRCode { get; set; }
         public string QrCodeImage { get; set; }
         public string JwtIssuer { get; set; }
-        public string Status { get; set; }
-        public List<ErrDetails> ErrorDetails { get; set; }
     }
+
     public class ErrDetails
     {
         public string ErrorCode { get; set; }

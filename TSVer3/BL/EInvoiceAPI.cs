@@ -17,9 +17,10 @@ namespace TSVer3.BL
         /// Get the IRN & OR code from EInvoice API from TaxPRo
         /// </summary>
         /// <returns></returns>
-        public IRNResponseModel GenerateIRNFromTaxPro()
+        public RedData GenerateIRNFromTaxPro()
         {
             IRNResponseModel iRNResponseModel = new IRNResponseModel();
+            RedData redData = new RedData();
             //get the auth token from API
              var authToken = GetAuthToken();
             try
@@ -38,8 +39,8 @@ namespace TSVer3.BL
 
                 DocDtls doctls = new DocDtls();
                 doctls.Typ = "INV";
-                doctls.No = "CSHLAI2122005654";
-                doctls.Dt = "17/03/2022";
+                doctls.No = "CSHLAI2122005662";
+                doctls.Dt = "18/03/2022";
                 jsonToSend.DocDtls = doctls;
 
                 SellerDtls sellerDtls = new SellerDtls();
@@ -103,9 +104,9 @@ namespace TSVer3.BL
                     SlNo = "1",
                     PrdDesc = "AIRLINE DELIVERY ORDER",
                     HsnCd = "1001",
-                    TotAmt = 2800,
+                    TotAmt = 2800.00M,
                     GstRt = 18,
-                    IgstAmt = 504,
+                    IgstAmt = 504.00M,
                     CgstAmt = 0,
                     SgstAmt = 0,
                     TotItemVal = 3304.00M,
@@ -116,8 +117,8 @@ namespace TSVer3.BL
                     Unit = "BAG",
                     UnitPrice = 3304,
                     Discount = 0,
-                    PreTaxVal = 2800,
-                    AssAmt =2800,  // it should be equal to totAmt - Discount
+                    PreTaxVal = 0M,
+                    AssAmt =2800.00M,  // it should be equal to totAmt - Discount
                     CesAmt = 0,
                     CesRt = 0,
                     CesNonAdvlAmt = 0,
@@ -134,15 +135,15 @@ namespace TSVer3.BL
                 jsonToSend.ItemList = itemLists;
 
                 ValDtls valDtls = new ValDtls();
-                valDtls.AssVal = 9978.84M;
+                valDtls.AssVal = 2800.00M;
                 valDtls.CgsVal = 0M;
                 valDtls.SgsVal = 0M;
-                valDtls.IgstVal = 504M;
+                valDtls.IgstVal = 504.00M;
                 valDtls.CesVal = 0M;
                 valDtls.StCesVal = 0M;
-                valDtls.Discount = 10M;
-                valDtls.OtherChrg = 20M;
-                valDtls.RndOffAmt = 0.3M;
+                valDtls.Discount = 0.0M;
+                valDtls.OtherChrg = 0.0M;
+                valDtls.RndOffAmt = 0.0M;
                 valDtls.TotInvVal = 3304.00M;
                 valDtls.TotInvValFc = 3304.00M;
                 jsonToSend.ValDtls = valDtls;
@@ -186,13 +187,14 @@ namespace TSVer3.BL
 
                 IRestResponse response = client.Execute(irnRequest);
                 iRNResponseModel = JsonConvert.DeserializeObject<IRNResponseModel>(response.Content);
+                redData = JsonConvert.DeserializeObject<RedData>(iRNResponseModel.Data);
             }
             catch (Exception ex)
             {
                 throw ex;
             }    
 
-            return iRNResponseModel;
+            return redData;
         }
 
 
