@@ -176,11 +176,11 @@ namespace TSVer3.BL
 
                 var json = JsonConvert.SerializeObject(jsonToSend);
 
-                var client = new RestClient("https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice?aspid=1677089922&password=Etrack@630&Gstin=34AACCC1596Q002&AuthToken=" + authToken.Data.AuthToken + "&user_name=TaxProEnvPON");
+                var client = new RestClient("https://gstsandbox.charteredinfo.com/eicore/dec/v1.03/Invoice?aspid=1677089922&password=Etrack@630&Gstin=34AACCC1596Q002&AuthToken=" + authToken.Data.AuthToken + "&user_name=TaxProEnvPON&QrCodeSize=250");
                 client.Timeout = -1;
                 var irnRequest = new RestRequest(Method.POST);
 
-                irnRequest.AddParameter("application/json", json, ParameterType.RequestBody);
+                irnRequest.AddParameter("application/json; charset=utf-8", json, ParameterType.RequestBody);
                 irnRequest.RequestFormat = DataFormat.Json;
 
                 IRestResponse response = client.Execute(irnRequest);

@@ -38,7 +38,8 @@ namespace TSVer3.Modal
         public string AckNo { get; set; }
         public DateTime AtckD { get; set; }
         public string Irn { get; set; }
-        public byte SignedInvoice { get; set; }
+        public string SignedInvoice { get; set; }
+        public string SignedQRCode { get; set; }
         public string Status { get; set; }
         public List<ErrDetails> ErrorDetails { get; set; }
     }
