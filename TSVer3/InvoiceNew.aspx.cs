@@ -38,7 +38,7 @@ namespace TSVer3
         protected void Page_Load(object sender, EventArgs e)
         {
             EInvoiceAPI eInvoiceAPI = new EInvoiceAPI();
-          var response =  eInvoiceAPI.GetAuthToken();
+            var response =  eInvoiceAPI.GenerateIRNFromTaxPro();
             //Session["CompanyCode"] = "CSHBLR"; Signature = "esge";
             //string BillNo_ = "CSHLAI212200565"; // CSHLSE212200058A CSHLSI212200176  CSHLAE212200209 CSHLAI212200565
             string BillNo_ = Request.QueryString["ien"];

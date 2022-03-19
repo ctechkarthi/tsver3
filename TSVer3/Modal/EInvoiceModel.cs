@@ -12,6 +12,13 @@ namespace TSVer3.Modal
         public Data Data { get; set; }
         public string ErrorDetails { get; set; }
         public string InfoDtls { get; set; }
+        public int status_cd { get; set; }
+        public Error Error { get; set; }
+    }
+    public class Error
+    {
+        public string error_cd { get; set; }
+        public string message { get; set; }
     }
 
     public class Data
@@ -22,7 +29,28 @@ namespace TSVer3.Modal
         public string Sek { get; set; }
         public DateTime TokenExpiry { get; set; }
     }
-   
+
+    /// <summary>
+    /// save the IRN response
+    /// </summary>
+    public class IRNResponseModel
+    {
+        public string AckNo { get; set; }
+        public DateTime AtckD { get; set; }
+        public string Irn { get; set; }
+        public byte SignedInvoice { get; set; }
+        public string Status { get; set; }
+        public List<ErrDetails> ErrorDetails { get; set; }
+    }
+    public class ErrDetails
+    {
+        public string ErrorCode { get; set; }
+        public string ErrorMessage { get; set; }
+    }
+
+    /// <summary>
+    /// pass the json data to generate the IRN number
+    /// </summary>
     public class EInvoiceDetailsModal
     {
         public string Version { get; set; }
@@ -32,23 +60,13 @@ namespace TSVer3.Modal
         public BuyerDtls BuyerDtls { get; set; }
         public DispDtls DispDtls { get; set; }
         public ShipDtls ShipDtls { get; set; }
-        public List<ItemList> ItemList { get; set; }
-        public BchDtls bchDtls { get; set; }
-        public AttribDtls attribDtls { get; set; }
+        public List<ItemList> ItemList { get; set; }      
         public ValDtls ValDtls { get; set; }
         public PayDtls PayDtls { get; set; }
         public RefDtls RefDtls { get; set; }
-        public PrecDocDtls PrecDocDtls { get; set; }
-        public ContrDtls ContrDtls { get; set; }
-        public AddlDocDtls AddlDocDtls { get; set; }
-        public ExpDtls ExpDtls { get; set; }
-        public EwbDtls EwbDtls { get; set; }
+        public List<AddlDocDtls> AddlDocDtls { get; set; }
+        public ExpDtls ExpDtls { get; set; }    
     }
-
-    //public class Version
-    //{
-    //    public string Version { get; set; }
-    //}
 
     public class TranDtls
     {
@@ -74,7 +92,7 @@ namespace TSVer3.Modal
         public string Addr1 { get; set; }
         public string Addr2 { get; set; }
         public string Loc { get; set; }
-        public string Pin { get; set; }
+        public int Pin { get; set; }
         public string Stdcd { get; set; }
         public string Ph { get; set; }
         public string Em { get; set; }
@@ -89,7 +107,7 @@ namespace TSVer3.Modal
         public string Addr1 { get; set; }
         public string Addr2 { get; set; }
         public string Loc { get; set; }
-        public string Pin { get; set; }
+        public int Pin { get; set; }
         public string Stdcd { get; set; }
         public string Ph { get; set; }
         public string Em { get; set; }
@@ -101,7 +119,7 @@ namespace TSVer3.Modal
         public string Addr1 { get; set; }
         public string Addr2 { get; set; }
         public string Loc { get; set; }
-        public string Pin { get; set; }
+        public int Pin { get; set; }
         public string Stdcd { get; set; }
     }
 
@@ -113,7 +131,7 @@ namespace TSVer3.Modal
         public string Addr1 { get; set; }
         public string Addr2 { get; set; }
         public string Loc { get; set; }
-        public string Pin { get; set; }
+        public int Pin { get; set; }
         public string Stdcd { get; set; }
     }
 
@@ -124,7 +142,7 @@ namespace TSVer3.Modal
         public string IsServc { get; set; }
         public string HsnCd { get; set; }
         public string Barcd { get; set; }
-        public string Qty { get; set; }
+        public decimal Qty { get; set; }
         public string FreQty { get; set; }
         public string Unit { get; set; }
         public string UnitPrice { get; set; }
@@ -147,20 +165,22 @@ namespace TSVer3.Modal
         public string OrdLineRef { get; set; }
         public string OrgCntry { get; set; }
         public string PrdSlNo { get; set; }
+        public BchDtls BchDtls { get; set; }
+        public List<AttribDetails> AttribDtls { get; set; }
     }
 
-    //public class BchDtls
-    //{
-    //    public string Nm { get; set; }
-    //    public string ExpDt { get; set; }
-    //    public string WrDt { get; set; }
-    //}
+    public class BchDtls
+    {
+        public string Nm { get; set; }
+        public string ExpDt { get; set; }
+        public string wrDt { get; set; }
+    }
 
-    //public class AttribDtls
-    //{
-    //    public string Nm { get; set; }
-    //    public string Val { get; set; }
-    //}
+    public class AttribDetails
+    {
+        public string Nm { get; set; }
+        public string Val { get; set; }
+    }
 
     public class ValDtls
     {
@@ -195,6 +215,9 @@ namespace TSVer3.Modal
     public class RefDtls
     {
         public string InvRm { get; set; }
+        public DocPerdDtls DocPerdDtls { get; set; }
+        public List<PrecDocDtls> PrecDocDtls { get; set; }
+        public List<ContrDtls> ContrDtls { get; set; }
     }
 
     public class DocPerdDtls
