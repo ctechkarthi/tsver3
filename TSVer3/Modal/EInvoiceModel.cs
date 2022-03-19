@@ -97,7 +97,7 @@ namespace TSVer3.Modal
         public string Addr2 { get; set; }
         public string Loc { get; set; }
         public int Pin { get; set; }
-        public string Stdcd { get; set; }
+        public string Stcd { get; set; }
         public string Ph { get; set; }
         public string Em { get; set; }
     }
@@ -112,7 +112,7 @@ namespace TSVer3.Modal
         public string Addr2 { get; set; }
         public string Loc { get; set; }
         public int Pin { get; set; }
-        public string Stdcd { get; set; }
+        public string Stcd { get; set; }
         public string Ph { get; set; }
         public string Em { get; set; }
     }
@@ -124,7 +124,7 @@ namespace TSVer3.Modal
         public string Addr2 { get; set; }
         public string Loc { get; set; }
         public int Pin { get; set; }
-        public string Stdcd { get; set; }
+        public string Stcd { get; set; }
     }
 
     public class ShipDtls
@@ -136,7 +136,7 @@ namespace TSVer3.Modal
         public string Addr2 { get; set; }
         public string Loc { get; set; }
         public int Pin { get; set; }
-        public string Stdcd { get; set; }
+        public string Stcd { get; set; }
     }
 
     public class ItemList

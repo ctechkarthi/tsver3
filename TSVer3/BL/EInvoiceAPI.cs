@@ -39,33 +39,34 @@ namespace TSVer3.BL
                 DocDtls doctls = new DocDtls();
                 doctls.Typ = "INV";
                 doctls.No = "CSHLAI2122005654";
-                doctls.Dt = "17-Mar-2022";
+                doctls.Dt = "17/03/2022";
                 jsonToSend.DocDtls = doctls;
 
                 SellerDtls sellerDtls = new SellerDtls();
-                sellerDtls.Gstin = "29AAGCC3874M1Z1";
-                sellerDtls.LglNm = "C.S HAWKLER LOGISTICS PVT LTD";
-                sellerDtls.TrdNm = "C.S HAWKLER LOGISTICS PVT LTD";
+                sellerDtls.Gstin = "34AACCC1596Q002";
+                sellerDtls.LglNm = "NIC company pvt ltd";
+                sellerDtls.TrdNm = "NIC company pvt ltd";
                 sellerDtls.Addr1 = "ANIRUDDH No.6, 1st Cross, 6th Main, Kamadhenu Layout,";
                 sellerDtls.Addr2 = "B Narayanapura, Doorvarni Nagar(post)";
                 sellerDtls.Loc = "Bangalore";
-                sellerDtls.Pin = 560016;
-                sellerDtls.Stdcd = "";
-                sellerDtls.Ph = "";
-                sellerDtls.Em = "accounts.blr@cshawkler.com";
+                sellerDtls.Pin = 605001;
+                sellerDtls.Stcd = "34";
+                sellerDtls.Ph = "980000000";
+                sellerDtls.Em = "accounts.blr@cshawkler.com";                
                 jsonToSend.SellerDtls = sellerDtls;
 
                 BuyerDtls buyerDtls = new BuyerDtls();
-                buyerDtls.Gstin = "33AATCA1244L1ZJ";
+                buyerDtls.Gstin = "29AWGPV7107B1Z1";
                 buyerDtls.LglNm = "AJ AERO SAIL XPRESS PRIVATE LIMITED";
                 buyerDtls.TrdNm = "AJ AERO SAIL XPRESS PRIVATE LIMITED";
                 buyerDtls.Addr1 = "NO 31, DR. AMBEDKAR STREET,";
                 buyerDtls.Addr2 = "MEENAMBAKKAM,";
                 buyerDtls.Loc = "CHENNAI";
-                buyerDtls.Pin = 600027;
-                buyerDtls.Stdcd = "";
-                buyerDtls.Ph = "";
-                buyerDtls.Em = "";
+                buyerDtls.Pin = 562160;
+                buyerDtls.Pos = "12";
+                buyerDtls.Stcd = "29";
+                buyerDtls.Ph = "980000000";
+                buyerDtls.Em = "accounts.blr@cshawkler.com";
                 jsonToSend.BuyerDtls = buyerDtls;
 
                 DispDtls dispDtls = new DispDtls();
@@ -73,50 +74,50 @@ namespace TSVer3.BL
                 dispDtls.Addr1 = "ANIRUDDH No.6, 1st Cross, 6th Main, Kamadhenu Layout,";
                 dispDtls.Addr2 = "B Narayanapura, Doorvarni Nagar(post)";
                 dispDtls.Loc = "Bangalore";
-                dispDtls.Pin = 560016;
-                dispDtls.Stdcd = "";
+                dispDtls.Pin = 562160;
+                dispDtls.Stcd = "29";
                 jsonToSend.DispDtls = dispDtls;
 
                 ShipDtls shipDtls = new ShipDtls();
-                shipDtls.Gstin = "33AATCA1244L1ZJ";
+                shipDtls.Gstin = "29AWGPV7107B1Z1";
                 shipDtls.LglNm = "AJ AERO SAIL XPRESS PRIVATE LIMITED";
                 shipDtls.TrdNm = "AJ AERO SAIL XPRESS PRIVATE LIMITED";
                 shipDtls.Addr1 = "NO 31, DR. AMBEDKAR STREET,";
                 shipDtls.Addr2 = "MEENAMBAKKAM,";
                 shipDtls.Loc = "CHENNAI";
-                shipDtls.Pin = 600027;
-                shipDtls.Stdcd = "";
+                shipDtls.Pin = 560068;
+                shipDtls.Stcd = "29";
                 jsonToSend.ShipDtls = shipDtls;
 
                 BchDtls bchDtls = new BchDtls();
-                bchDtls.Nm = "33AATCA1244L1ZJ";
-                bchDtls.ExpDt = "MEENAMBAKKAM,";
-                bchDtls.wrDt = "MEENAMBAKKAM,";
+                bchDtls.Nm = "29AWGPV7107B1Z1";
+                bchDtls.ExpDt = "27/02/2022";
+                bchDtls.wrDt = "21/02/2022";
 
                 List<AttribDetails> attribDtls = new List<AttribDetails>();
-                attribDtls.Add(new AttribDetails() { Nm = "33AATCA1244L1ZJ", Val = "MEENAMBAKKAM," });
+                attribDtls.Add(new AttribDetails() { Nm = "29AWGPV7107B1Z1", Val = "MEENAMBAKKAM," });
 
                 List<ItemList> itemLists = new List<ItemList>();
                 itemLists.Add(new ItemList()
                 {
                     SlNo = "1",
                     PrdDesc = "AIRLINE DELIVERY ORDER",
-                    HsnCd = "9967",
+                    HsnCd = "1001",
                     TotAmt = 2800,
                     GstRt = 18,
                     IgstAmt = 504,
                     CgstAmt = 0,
                     SgstAmt = 0,
-                    TotItemVal = 3304,
+                    TotItemVal = 3304.00M,
                     IsServc = "N",
                     Barcd = "",
                     Qty = 1,
                     FreQty = "BAG",
-                    Unit = "1",
+                    Unit = "BAG",
                     UnitPrice = 3304,
                     Discount = 0,
                     PreTaxVal = 2800,
-                    AssAmt =0,
+                    AssAmt =2800,  // it should be equal to totAmt - Discount
                     CesAmt = 0,
                     CesRt = 0,
                     CesNonAdvlAmt = 0,
@@ -124,8 +125,8 @@ namespace TSVer3.BL
                     StateCesAmt = 0,
                     StateCesNonAdvlAmt = 0,
                     OthChrg = 0,
-                    OrdLineRef = "",
-                    OrgCntry = "",
+                    OrdLineRef = "1",
+                    OrgCntry = "IN",
                     PrdSlNo = "PRD001",
                     BchDtls = bchDtls,
                     AttribDtls = attribDtls
@@ -136,14 +137,14 @@ namespace TSVer3.BL
                 valDtls.AssVal = 9978.84M;
                 valDtls.CgsVal = 0M;
                 valDtls.SgsVal = 0M;
-                valDtls.IgstVal = 1197.46M;
-                valDtls.CesVal = 508.94M;
-                valDtls.StCesVal = 1202.46M;
+                valDtls.IgstVal = 504M;
+                valDtls.CesVal = 0M;
+                valDtls.StCesVal = 0M;
                 valDtls.Discount = 10M;
                 valDtls.OtherChrg = 20M;
                 valDtls.RndOffAmt = 0.3M;
-                valDtls.TotInvVal = 12908M;
-                valDtls.TotInvValFc = 12897.7M;
+                valDtls.TotInvVal = 3304.00M;
+                valDtls.TotInvValFc = 3304.00M;
                 jsonToSend.ValDtls = valDtls;
 
                 PayDtls payDtls = new PayDtls();

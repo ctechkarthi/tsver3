@@ -19,6 +19,7 @@ using System.Web.UI.WebControls;
 using PdfSharp.Drawing.Layout;
 using System.ComponentModel;
 using System.Drawing;
+using ZXing;
 
 //using System.Web.UI.WebControls;
 //using PdfSharp.Drawing.Layout;
@@ -115,16 +116,19 @@ namespace TSVer3
                     string qr = "eyJhbGciOiJSUzI1NiIsImtpZCI6IkVEQzU3REUxMzU4QjMwMEJBOUY3OTM0MEE2Njk2ODMxRjNDODUwNDciLCJ0eXAiOiJKV1QiLCJ4NXQiOiI3Y1Y5NFRXTE1BdXA5NU5BcG1sb01mUElVRWMifQ.eyJkYXRhIjoie1wiU2VsbGVyR3N0aW5cIjpcIjM0QUFDQ0MxNTk2UTAwMlwiLFwiQnV5ZXJHc3RpblwiOlwiMjlBV0dQVjcxMDdCMVoxXCIsXCJEb2NOb1wiOlwiRE9DLzUxMjEzNTZcIixcIkRvY1R5cFwiOlwiSU5WXCIsXCJEb2NEdFwiOlwiMTcvMDMvMjAyMVwiLFwiVG90SW52VmFsXCI6MTI5MDgsXCJJdGVtQ250XCI6MSxcIk1haW5Ic25Db2RlXCI6XCIxMDA2MTBcIixcIklyblwiOlwiODhiZWY4YjE2MzIzMjk2MDkzODg0ODM2YjQzNzE4MzZiZjBjNzZjM2YzMzkwNmExNmFiMDA1MDI5MzkyMzcyZVwiLFwiSXJuRHRcIjpcIjIwMjItMDMtMTcgMjE6MTg6NTVcIn0iLCJpc3MiOiJOSUMifQ.MlqORuy9P1vxEUO9oAK0QH7DPa7bh4WrZG61BDVgydKa1U3Srkpni9LyLoPuXxuv4dmfL3CbV0rG_ub5_8MS2-mOPbfmEQAuQ8m_AxxekENB4PifUiUD-vAs48_s1Kja2lVYb80PHFdOl8ai_Dm_jx_pcKngcZltEMhMr5zAR9FBVuZNyGOEAmpfxywy5D2haxpNJo0M2hMYZmlaNoIGvXZxkaJ_-YzSVrRrK1gEa0RdwI5rzKpD_g-8DkV20Jq8e-EI77q3f2JfxOHgr-WrNWF4nAHtACUHJHR27MiTxA-j_byN7LzEVVWjlKlLcibVk1ZObhqjSLJQNFjhCUsrjA";
 
                     byte[] qrImg = Encoding.ASCII.GetBytes(qr);
-   
-                    Bitmap returnImage = null;
+
                     MemoryStream ms = new MemoryStream(qrImg);
-                    returnImage = new Bitmap(ms);
-                    
+                    System.Drawing.Image bitmap = System.Drawing.Image.FromStream(ms);
+                    //using (System.Drawing.Image bitmap = System.Drawing.Image.FromStream(ms))
+                    //{
+                    //    BarcodeReader reader = new BarcodeReader();
+                    //     result = reader.Decode((Bitmap)bitmap);                       
+                    //}
                     ////plBarCode.Controls.Add(imgBarCode);
 
                     ////bitmap1.Save(WorkingFilesPath + @"\qr.png");
                     ///
-                    XImage image_QRCode = XImage.FromGdiPlusImage(returnImage);
+                    XImage image_QRCode = XImage.FromGdiPlusImage((Bitmap)bitmap);
                     graph.DrawImage(image_QRCode, 480, 110, 90, 90);
                     XTextFormatter tf = new XTextFormatter(graph);
 
