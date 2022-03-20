@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Text;
 using System.Security.Cryptography;
 using System.Collections;
+using TSVer3.Modal;
 
 namespace TSVer3
 {
@@ -25,7 +26,8 @@ namespace TSVer3
         DataTable dt_NameList = new DataTable();
         bool value; decimal grdTaxAmount = 0; decimal IGST_Particulars = 0; decimal IGSTValue_Particulars = 0;
         decimal GST_Particulars = 0; decimal GSTValue_Particulars = 0; decimal SCGST_Particulars = 0; decimal SCGSTValue_Particulars = 0; DataSet ds = new DataSet();
-        decimal grdNonTaxAmount = 0; decimal grdCGSTAmount = 0; decimal grdIGSTAmount = 0; 
+        decimal grdNonTaxAmount = 0; decimal grdCGSTAmount = 0; decimal grdIGSTAmount = 0;
+        RedData response = new RedData();
         #endregion
 
         protected void Page_Load(object sender, EventArgs e)
@@ -569,6 +571,34 @@ namespace TSVer3
                     else { lbl_Status.ForeColor = System.Drawing.Color.Red; lbl_Status.Text = "Please Check Job Category!"; }
                 }
                 else { lbl_Status.ForeColor = System.Drawing.Color.Red; lbl_Status.Text = "Invoice not delete!"; }
+            }
+            catch (Exception ex)
+            { lbl_Status.ForeColor = System.Drawing.Color.Red; lbl_Status.Text = ex.Message; }
+        }
+        
+        protected void Btn_IRN_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lbl_Status.Text = string.Empty;
+                string confirmValue = Request.Form["confirm_value"];
+                if (confirmValue == "Yes")
+                {
+                        if (!string.IsNullOrEmpty(tbx_BillNo.Text))
+                        {
+                            EInvoiceAPI eInvoiceAPI = new EInvoiceAPI();
+                            //value = eInvoiceAPI.GenerateIRNFromTaxPro2(
+                                
+                           // response = eInvoiceAPI.GenerateIRNFromTaxPro();                            
+                           if (value == true)
+                            {
+                               lbl_Status.ForeColor = System.Drawing.Color.Green; lbl_Status.Text = tbx_BillNo.Text + " IRN Generate Success";
+                            }
+                            else { lbl_Status.ForeColor = System.Drawing.Color.Red; lbl_Status.Text = "IRN Not Generated !"; }
+                        }
+                        else { lbl_Status.ForeColor = System.Drawing.Color.Red; lbl_Status.Text = "Please Enter Invoice Bill No!"; }
+                    }
+                else { lbl_Status.ForeColor = System.Drawing.Color.Red; lbl_Status.Text = "IRN Not Generated !"; }
             }
             catch (Exception ex)
             { lbl_Status.ForeColor = System.Drawing.Color.Red; lbl_Status.Text = ex.Message; }
