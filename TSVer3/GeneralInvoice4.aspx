@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Tracksen" Language="C#" MasterPageFile="~/UserSite.Master" AutoEventWireup="true" CodeBehind="GeneralInvoice4.aspx.cs" Inherits="TSVer3.GeneralInvoice4" %>
+<%@ Page Title="Tracksen" Language="C#" MasterPageFile="~/UserSite.Master" AutoEventWireup="true" CodeBehind="GeneralInvoice4.aspx.cs" Inherits="TSVer3.GeneralInvoice4" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
@@ -26,6 +26,17 @@
             confirm_value.type = "hidden";
             confirm_value.name = "confirm_value";
             if (confirm("Do you want to Delete Invoice ?")) {
+                confirm_value.value = "Yes";
+            } else {
+                confirm_value.value = "No";
+            }
+            document.forms[0].appendChild(confirm_value);
+        }
+        function ConfirmIRN() {
+            var confirm_value = document.createElement("INPUT");
+            confirm_value.type = "hidden";
+            confirm_value.name = "confirm_value";
+            if (confirm("Do you want to Generate IRN ?")) {
                 confirm_value.value = "Yes";
             } else {
                 confirm_value.value = "No";
@@ -190,7 +201,7 @@
                                     </td>
                                     <td></td>
                                     <td valign="top">
-                                        <asp:TextBox ID="tbx_BillDate" runat="server" OnTextChanged="tbx_BillDate_TextChanged" AutoPostBack="true" AutoCompleteType="Disabled"></asp:TextBox>
+                                        <asp:TextBox ID="tbx_BillDate" runat="server" OnTextChanged="tbx_BillDate_TextChanged" AutoPostBack="True" AutoCompleteType="Disabled"></asp:TextBox>
                                       <asp:CalendarExtender ID="CalendarExtender2" runat="server" Enabled="True" TargetControlID="tbx_BillDate" Format="dd-MMM-yyyy"></asp:CalendarExtender>
                                       </td>
                                     <td></td>
@@ -487,8 +498,9 @@
                                         <asp:Button ID="Btn_Clear" runat="server" OnClick="Btn_Clear_Click" Text="Clear" ToolTip="Click Here!"></asp:Button>
                                          &nbsp;&nbsp;
                                         <asp:Button ID="Btn_Save" runat="server" Text="Save" ToolTip="Click Here!" Visible="False" OnClick="Btn_Save_Click"></asp:Button>&nbsp;&nbsp;
+                                         <asp:Button ID="Btn_IRN" runat="server" OnClientClick="ConfirmIRN()" Text="Generate IRN" ToolTip="Click Here!" Visible="False" OnClick="Btn_IRN_Click"></asp:Button>&nbsp;&nbsp;
                                         <asp:Button ID="Btn_Delete" runat="server" OnClick="Btn_Delete_Click" OnClientClick="Confirm()" Text="Delete" ToolTip="Click Here!" Visible="False"></asp:Button>&nbsp;&nbsp;
-                                          <asp:DropDownList ID="ddl_BankName" runat="server" >
+                                       <asp:DropDownList ID="ddl_BankName" runat="server" >
                                             <asp:ListItem Value="HDFC Bank - INR">HDFC Bank - INR</asp:ListItem>
                                             <asp:ListItem Value="HDFC Bank - USD">HDFC Bank - USD</asp:ListItem>
                                             <asp:ListItem Value="IDBI Bank">IDBI Bank</asp:ListItem>
