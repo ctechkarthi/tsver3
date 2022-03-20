@@ -197,10 +197,16 @@ namespace TSVer3.BL
             return redData;
         }
 
-
-        public IRNResponseModel CancelIRNEInvoice()
+        /// <summary>
+        /// To cancel the generated IRN
+        /// </summary>
+        /// <param name="strIrn"></param>
+        /// <param name="strCnlReason"></param>
+        /// <param name="strIrnCancelDesc"></param>
+        /// <returns></returns>
+        public InvCancelResponseModel CancelIRNEInvoice(string strIrn, string strCnlReason, string strIrnCancelDesc )
         {
-            IRNResponseModel iRNResponseModel = new IRNResponseModel();
+            InvCancelResponseModel iRNCancelResponseModel = new InvCancelResponseModel();
             //get the auth token from API
             var authToken = GetAuthToken();
             try
@@ -209,19 +215,24 @@ namespace TSVer3.BL
                 client.Timeout = -1;
                 var irnRequest = new RestRequest(Method.POST);
 
-                var json = "";
+                InvCancelRequestModel invCancelRequestModel =  new InvCancelRequestModel();
+                invCancelRequestModel.CnlRem = strIrnCancelDesc;
+                invCancelRequestModel.CnlRsn = strCnlReason;
+                invCancelRequestModel.Irn = strIrn;
+
+                var json = JsonConvert.SerializeObject(invCancelRequestModel);
 
                 irnRequest.AddParameter("application/json; charset=utf-8", json, ParameterType.RequestBody);
                 irnRequest.RequestFormat = DataFormat.Json;
 
                 IRestResponse response = client.Execute(irnRequest);
-                iRNResponseModel = JsonConvert.DeserializeObject<IRNResponseModel>(response.Content);
+                iRNCancelResponseModel = JsonConvert.DeserializeObject<InvCancelResponseModel>(response.Content);
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-            return iRNResponseModel;
+            return iRNCancelResponseModel;
         }
 
         /// <summary>

@@ -290,10 +290,18 @@ namespace TSVer3.Modal
         public string VehType { get; set; }
     }
 
-    public class InvCancel
+    public class InvCancelRequestModel
     {
         public string Irn { get; set; }
         public string CnlRsn { get; set; }
         public string CnlRem { get; set; }
+    }
+    public class InvCancelResponseModel
+    {
+        public string status_cd { get; set; }
+        public Error Error { get; set; }
+        public List<ErrDetails> ErrorDetails { get; set; }
+        public string Irn { get; set; }
+        public string CancelDate { get; set; }
     }
 }
